@@ -1,14 +1,8 @@
 # Yatzy Refactoring Kata
 
-This Refactoring Kata was designed by Jon Jagger and is available in his Cyber-Dojo. See [his blog post](http://jonjagger.blogspot.co.uk/2012/05/yahtzee-cyber-dojo-refactoring-in-java.html)
-
-I have changed it a little, so that the rules more closely match the original game.
-
-The other language translations have been contributed by:
-
-- Python: Emily Bache
-- Ruby: Kim Persson and Lennart Fridén
-- Javascript: Antti Tarvainen
+1. Clone the repository down.
+2. Install [test-unit](https://github.com/test-unit/test-unit) with: ```gem install test-unit```
+3. Run tests with ```ruby test-yatzy.rb```
 
 ## Kata: Yatzy rules
 
