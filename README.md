@@ -4,6 +4,9 @@
 2. Install [test-unit](https://github.com/test-unit/test-unit) with: ```gem install test-unit```
 3. Run tests with ```ruby test_yatzy.rb```
 
+Read the rules below, and begin improving the application and test code. A good sample online game 
+can be found [here](http://www.famholen.com/yatzy.html) to get a better feel for the context of the game.
+
 ## Kata: Yatzy rules
 
 The game of Yatzy is a simple dice game. Each player
