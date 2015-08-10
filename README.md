@@ -1,6 +1,6 @@
 # Yatzy Refactoring Kata
 
-1. Clone the repository down.
+1. Clone this repository.
 2. Install [test-unit](https://github.com/test-unit/test-unit) with: ```gem install test-unit```
 3. Run tests with ```ruby test_yatzy.rb```
 
