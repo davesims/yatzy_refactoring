@@ -2,7 +2,7 @@
 
 1. Clone the repository down.
 2. Install [test-unit](https://github.com/test-unit/test-unit) with: ```gem install test-unit```
-3. Run tests with ```ruby test-yatzy.rb```
+3. Run tests with ```ruby test_yatzy.rb```
 
 ## Kata: Yatzy rules
 
