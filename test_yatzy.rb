@@ -91,6 +91,8 @@ class YatzyTest < Test::Unit::TestCase
   def test_fullHouse()
     assert 18 == Yatzy.fullHouse(6,2,2,2,6)
     assert 0 == Yatzy.fullHouse(2,3,4,5,6)
+    assert 0 == Yatzy.fullHouse(3,3,3,1,5)
+    assert 0 == Yatzy.fullHouse(4,4,4,4,4)
   end
 end
 
