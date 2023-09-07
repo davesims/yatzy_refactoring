@@ -1,6 +1,6 @@
 class Yatzy
   def self.chance(d1, d2, d3, d4, d5)
-    total = 0
+    total = [di, d2, d3, d4, d5].sum
     total += d1
     total += d2
     total += d3
@@ -83,13 +83,13 @@ class Yatzy
     return s
   end
 
-  def initialize(d1, d2, d3, d4, _5)
+  def initialize(d1, d2, d3, d4, a)
     @dice = [0]*5
     @dice[0] = d1
     @dice[1] = d2
     @dice[2] = d3
     @dice[3] = d4
-    @dice[4] = _5
+    @dice[4] = a
   end
 
   def fours
@@ -161,10 +161,10 @@ class Yatzy
     end
   end
 
-  def self.four_of_a_kind( _1,  _2,  d3,  d4,  d5)
+  def self.four_of_a_kind( a,  b,  d3,  d4,  d5)
     tallies = [0]*6
-    tallies[_1-1] += 1
-    tallies[_2-1] += 1
+    tallies[a-1] += 1
+    tallies[b-1] += 1
     tallies[d3-1] += 1
     tallies[d4-1] += 1
     tallies[d5-1] += 1
@@ -220,11 +220,11 @@ class Yatzy
 
   def self.fullHouse( d1,  d2,  d3,  d4,  d5)
     tallies = []
-    _2 = false
+    a = false
     i = 0
-    _2_at = 0
-    _3 = false
-    _3_at = 0
+    a_at = 0
+    b = false
+    b_at = 0
 
     tallies = [0]*6
     tallies[d1-1] += 1
@@ -235,20 +235,20 @@ class Yatzy
 
     for i in Array 0..5
       if (tallies[i] == 2)
-        _2 = true
-        _2_at = i+1
+        a = true
+        a_at = i+1
       end
     end
 
     for i in Array 0..5
       if (tallies[i] == 3)
-        _3 = true
-        _3_at = i+1
+        b = true
+        b_at = i+1
       end
     end
 
-    if (_2 and _3)
-      return _2_at * 2 + _3_at * 3
+    if (a and b)
+      return b_at * 2 + b_at * 3
     else
       return 0
     end
