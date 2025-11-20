@@ -1,10 +1,26 @@
 # Yatzy Refactoring Kata
 
-1. Clone this repository.
-2. Install [test-unit](https://github.com/test-unit/test-unit) with: ```gem install test-unit```
-3. Run tests with ```ruby test_yatzy.rb```
+This kata is available in both TypeScript and Ruby. Choose your preferred language and follow the instructions below.
 
-Read the rules below, and begin improving the application and test code. A good sample online game 
+## TypeScript Version
+
+1. Clone this repository.
+2. Navigate to the TypeScript directory: ```cd typescript```
+3. Install dependencies with: ```npm install```
+4. Run tests with: ```npm test```
+5. Run tests in watch mode: ```npm run test:watch```
+6. Build the project: ```npm run build```
+
+## Ruby Version (Original)
+
+1. Clone this repository.
+2. Navigate to the Ruby directory: ```cd ruby```
+3. Install [test-unit](https://github.com/test-unit/test-unit) with: ```gem install test-unit```
+4. Run tests with ```ruby test_yatzy.rb```
+
+---
+
+Read the rules below, and begin improving the application and test code. A good sample online game
 can be found [here](http://www.famholen.com/yatzy.html) to get a better feel for the context of the game.
 
 ## Kata: Yatzy rules
