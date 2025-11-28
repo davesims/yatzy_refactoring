@@ -1,148 +1,150 @@
 # Yatzy Refactoring Kata
 
-This kata is available in both TypeScript and Ruby. Choose your preferred language and follow the instructions below.
+A refactoring exercise where you improve poorly written code for the dice game Yatzy (similar to Yahtzee). The code intentionally contains bugs, code smells, and design issues for you to discover and fix.
 
-## TypeScript Version
+## Available Languages
 
-1. Clone this repository.
-2. Navigate to the TypeScript directory: ```cd typescript```
-3. Install dependencies with: ```npm install```
-4. Run tests with: ```npm test```
-5. Run tests in watch mode: ```npm run test:watch```
-6. Build the project: ```npm run build```
+Choose your preferred language and follow the instructions in its directory:
 
-## Ruby Version (Original)
+- **[Java](java/)** - Maven + JUnit 5
+- **[JavaScript](javascript/)** - Jest with object destructuring
+- **[Python](python/)** - pytest
+- **[TypeScript](typescript/)** - Jest + ts-jest
+- **[Ruby](ruby/)** - Test::Unit (original version)
 
-1. Clone this repository.
-2. Navigate to the Ruby directory: ```cd ruby```
-3. Install [test-unit](https://github.com/test-unit/test-unit) with: ```gem install test-unit```
-4. Run tests with ```ruby test_yatzy.rb```
+Each implementation contains the same bugs and code smells, just expressed in that language's idioms.
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd yatzy_refactoring
+
+# Choose your language and follow its README
+cd java          # or javascript, python, typescript, ruby
+```
+
+## What to Refactor
+
+The code intentionally has several issues:
+
+1. **Bugs** - Logic errors that cause tests to fail
+2. **Duplication** - Repetitive code patterns
+3. **Poor naming** - Confusing variable and method names
+4. **Inconsistency** - Mixed method signatures and styles
+5. **Complexity** - Overly complicated logic
+
+Your goal is to make the code clean, maintainable, and correct while keeping all tests passing.
 
 ---
 
-Read the rules below, and begin improving the application and test code. A good sample online game
-can be found [here](http://www.famholen.com/yatzy.html) to get a better feel for the context of the game.
+## Yatzy Game Rules
 
-## Kata: Yatzy rules
+The game of Yatzy is a simple dice game. Each player rolls five six-sided dice. They can re-roll some or all of the dice up to three times (including the original roll).
 
-The game of Yatzy is a simple dice game. Each player
-rolls five six-sided dice. They can re-roll some or all
-of the dice up to three times (including the original roll).
+**Your task**: Score a GIVEN roll in a GIVEN category. You do NOT have to program the dice rolling or game flow.
 
-For example, suppose a players rolls:
+### Example Roll Sequence
 
-    3,4,5,5,2
-    
-They hold (-,-,5,5,-) and re-roll (3,4,-,-,2):
+A player rolls:
+```
+3, 4, 5, 5, 2
+```
 
-    5,1,5,5,3
+They hold `(-,-,5,5,-)` and re-roll `(3,4,-,-,2)`:
+```
+5, 1, 5, 5, 3
+```
 
-They hold (5,-,5,5,-) and re-roll (-,1,-,-,3):
+They hold `(5,-,5,5,-)` and re-roll `(-,1,-,-,3)`:
+```
+5, 6, 5, 5, 2
+```
 
-    5,6,5,5,2
+The player then places this roll in a category for scoring.
 
-The player then places the roll in a category, such as ones,
-twos, fives, pair, two pairs etc (see below). If the roll is
-compatible with the category, the player gets a score for the
-roll according to the rules. If the roll is not compatible
-with the category, the player scores zero for the roll.
+## Scoring Categories
 
-For example, suppose a player scores 5,6,5,5,2 in the fives
-category they would score 15 (three fives). The score for
-that go is then added to their total and the category cannot
-be used again in the remaining goes for that game. 
-A full game consists of one go for each category. Thus, for
-their last go in a game, a player must choose their only
-remaining category.
+### Chance
+The sum of all dice, no matter what they read.
 
-Your task is to score a GIVEN roll in a GIVEN category.
-You do NOT have to program the random dice rolling.
-The game is NOT played by letting the computer choose the
-highest scoring category for a given roll.
-  
+**Examples:**
+- `1,1,3,3,6` → 14 (1+1+3+3+6)
+- `4,5,5,6,1` → 21 (4+5+5+6+1)
 
-## Kata: Yatzy Categories and Scoring Rules
+### Yatzy
+All five dice showing the same number scores 50 points.
 
-### Chance: 
-The player scores the sum of all dice, no matter what they read.
-For example:
-  
--   1,1,3,3,6 placed on "chance" scores 14 (1+1+3+3+6)
--   4,5,5,6,1 placed on "chance" scores 21 (4+5+5+6+1)  
+**Examples:**
+- `1,1,1,1,1` → 50
+- `1,1,1,2,1` → 0
 
-### Yatzy: 
-If all dice have the same number,
-the player scores 50 points. 
-For example:
-  
--   1,1,1,1,1 placed on "yatzy" scores 50
--   1,1,1,2,1 placed on "yatzy" scores 0
+### Ones, Twos, Threes, Fours, Fives, Sixes
+The sum of dice showing the specified number.
 
-### Ones, Twos, Threes, Fours, Fives, Sixes: 
-The player scores the sum of the dice that reads one, 
-two, three, four, five or six, respectively. 
-For example:
+**Examples:**
+- `1,1,2,4,4` on "fours" → 8 (4+4)
+- `2,3,2,5,1` on "twos" → 4 (2+2)
+- `3,3,3,4,5` on "ones" → 0
 
--   1,1,2,4,4 placed on "fours" scores 8 (4+4)
--   2,3,2,5,1 placed on "twos" scores 4  (2+2)
--   3,3,3,4,5 placed on "ones" scores 0
+### Pair
+The sum of the two highest matching dice.
 
-### Pair: 
-The player scores the sum of the two highest matching dice.
-For example, when placed on "pair":
-  
--   3,3,3,4,4 scores 8 (4+4)
--   1,1,6,2,6 scores 12 (6+6)
--   3,3,3,4,1 scores 6 (3+3)
--   3,3,3,3,1 scores 6 (3+3)
+**Examples:**
+- `3,3,3,4,4` → 8 (4+4)
+- `1,1,6,2,6` → 12 (6+6)
+- `3,3,3,4,1` → 6 (3+3)
 
-### Two pairs: 
-If there are two pairs of dice with the same number, the
-player scores the sum of these dice. 
-For example, when placed on "two pairs":
-  
--   1,1,2,3,3 scores 8 (1+1+3+3)
--   1,1,2,3,4 scores 0
--   1,1,2,2,2 scores 6 (1+1+2+2)
+### Two Pairs
+If there are two pairs, the sum of all four dice.
 
-### Three of a kind: 
-If there are three dice with the same number, the player
-scores the sum of these dice. 
-For example, when placed on "three of a kind":
-    
--    3,3,3,4,5 scores 9 (3+3+3)
--    3,3,4,5,6 scores 0
--    3,3,3,3,1 scores 9 (3+3+3)
+**Examples:**
+- `1,1,2,3,3` → 8 (1+1+3+3)
+- `1,1,2,3,4` → 0
+- `1,1,2,2,2` → 6 (1+1+2+2)
 
-### Four of a kind: 
-If there are four dice with the same number, the player
-scores the sum of these dice. 
-For example, when placed on "four of a kind":
-  
--    2,2,2,2,5 scores 8 (2+2+2+2)
--    2,2,2,5,5 scores 0
--    2,2,2,2,2 scores 8 (2+2+2+2)
+### Three of a Kind
+If there are three dice with the same number, the sum of those three dice.
 
-### Small straight: 
-When placed on "small straight", if the dice read
+**Examples:**
+- `3,3,3,4,5` → 9 (3+3+3)
+- `3,3,4,5,6` → 0
+- `3,3,3,3,1` → 9 (3+3+3)
 
-   1,2,3,4,5, 
-   
-the player scores 15 (the sum of all the dice).
+### Four of a Kind
+If there are four dice with the same number, the sum of those four dice.
 
-### Large straight: 
-When placed on "large straight", if the dice read
+**Examples:**
+- `2,2,2,2,5` → 8 (2+2+2+2)
+- `2,2,2,5,5` → 0
+- `2,2,2,2,2` → 8 (2+2+2+2)
 
-   2,3,4,5,6, 
-   
-the player scores 20 (the sum of all the dice).
+### Small Straight
+The sequence 1,2,3,4,5 scores 15 (the sum of all dice).
 
-### Full house: 
-If the dice are two of a kind and three of a kind, the
-player scores the sum of all the dice. 
-For example, when placed on "full house":
-   
--    1,1,2,2,2 scores 8 (1+1+2+2+2) 
--    2,2,3,3,4 scores 0
--    4,4,4,4,4 scores 0
+**Examples:**
+- `1,2,3,4,5` → 15
+- `2,3,4,5,1` → 15
+- `1,2,2,4,5` → 0
 
+### Large Straight
+The sequence 2,3,4,5,6 scores 20 (the sum of all dice).
+
+**Examples:**
+- `6,2,3,4,5` → 20
+- `2,3,4,5,6` → 20
+- `1,2,2,4,5` → 0
+
+### Full House
+Two of one kind and three of another scores the sum of all five dice.
+
+**Examples:**
+- `1,1,2,2,2` → 8 (1+1+2+2+2)
+- `2,2,3,3,4` → 0
+- `4,4,4,4,4` → 0
+
+## Resources
+
+- Play online: [Yatzy Game](http://www.famholen.com/yatzy.html)
+- Practice your refactoring skills and improve the code quality!

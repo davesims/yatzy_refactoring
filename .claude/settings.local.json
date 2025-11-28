@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(npm test)",
-      "Bash(git mv:*)"
+      "Bash(git mv:*)",
+      "Bash(npm install:*)",
+      "Bash(tree:*)",
+      "Bash(git add:*)",
+      "Bash(mvn clean test:*)"
     ],
     "deny": [],
     "ask": []
