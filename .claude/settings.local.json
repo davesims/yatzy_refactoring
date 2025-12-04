@@ -6,7 +6,9 @@
       "Bash(npm install:*)",
       "Bash(tree:*)",
       "Bash(git add:*)",
-      "Bash(mvn clean test:*)"
+      "Bash(mvn clean test:*)",
+      "Bash(mvn:*)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []
