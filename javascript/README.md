@@ -5,6 +5,25 @@
 - Node.js 14 or higher
 - npm
 
+### Setting Up Node.js
+
+**macOS:**
+```bash
+brew install node
+```
+
+**Linux:**
+```bash
+# Using NodeSource
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+**Windows:**
+- Download from [nodejs.org](https://nodejs.org/)
+- Or use [nvm-windows](https://github.com/coreybutler/nvm-windows)
+- Verify: `node --version` and `npm --version`
+
 ## Getting Started
 
 ### Install Dependencies

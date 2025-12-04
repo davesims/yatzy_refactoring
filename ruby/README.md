@@ -5,6 +5,27 @@
 - Ruby 2.7 or higher
 - gem (Ruby package manager)
 
+### Setting Up Ruby
+
+**macOS/Linux:**
+```bash
+# Using asdf
+asdf install ruby 3.4.7
+asdf local ruby 3.4.7
+
+# OR using rbenv
+rbenv install 3.4.7
+rbenv local 3.4.7
+
+# OR using system Ruby
+ruby --version
+gem --version
+```
+
+**Windows:**
+- Download [RubyInstaller](https://rubyinstaller.org/)
+- Verify: `ruby --version` and `gem --version`
+
 ## Getting Started
 
 ### Install Dependencies

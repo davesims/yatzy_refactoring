@@ -7,28 +7,25 @@
 
 ### Setting Up Python
 
-If you don't have Python installed or see version manager errors:
-
-**Using asdf:**
+**macOS/Linux:**
 ```bash
+# Using asdf
 asdf install python 3.11.0
 asdf local python 3.11.0
-```
 
-**Using pyenv:**
-```bash
+# OR using pyenv
 pyenv install 3.11.0
 pyenv local 3.11.0
-```
 
-**Using system Python:**
-```bash
-# macOS/Linux
+# OR using system Python
 python3 --version
-
-# Ensure pip is available
 python3 -m pip --version
 ```
+
+**Windows:**
+- Download from [python.org](https://www.python.org/downloads/)
+- Or use [pyenv-win](https://github.com/pyenv-win/pyenv-win)
+- Verify: `python --version` and `pip --version`
 
 ## Getting Started
 

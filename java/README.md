@@ -5,6 +5,27 @@
 - JDK 11 or higher
 - Maven
 
+### Setting Up Java & Maven
+
+**macOS:**
+```bash
+brew install openjdk@11 maven
+```
+
+**Linux:**
+```bash
+# Ubuntu/Debian
+sudo apt-get install openjdk-11-jdk maven
+
+# Fedora/RHEL
+sudo dnf install java-11-openjdk maven
+```
+
+**Windows:**
+- Download [JDK](https://adoptium.net/) and [Maven](https://maven.apache.org/download.cgi)
+- Or use [Chocolatey](https://chocolatey.org/): `choco install openjdk11 maven`
+- Verify: `java -version` and `mvn --version`
+
 ## Getting Started
 
 ### Run Tests
