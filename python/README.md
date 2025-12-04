@@ -5,6 +5,31 @@
 - Python 3.7 or higher
 - pip
 
+### Setting Up Python
+
+If you don't have Python installed or see version manager errors:
+
+**Using asdf:**
+```bash
+asdf install python 3.11.0
+asdf local python 3.11.0
+```
+
+**Using pyenv:**
+```bash
+pyenv install 3.11.0
+pyenv local 3.11.0
+```
+
+**Using system Python:**
+```bash
+# macOS/Linux
+python3 --version
+
+# Ensure pip is available
+python3 -m pip --version
+```
+
 ## Getting Started
 
 ### Install Dependencies
