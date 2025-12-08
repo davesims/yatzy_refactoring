@@ -146,5 +146,4 @@ Two of one kind and three of another scores the sum of all five dice.
 
 ## Resources
 
-- Play online: [Yatzy Game](http://www.famholen.com/yatzy.html)
 - Practice your refactoring skills and improve the code quality!
